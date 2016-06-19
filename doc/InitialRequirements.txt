@@ -1,0 +1,29 @@
+
+Requirements
+
+
+Allows caller to store geographical points for fast retrieval, and supports a 
+query for all objects contained within n kilometers of a particular point
+given in latitude, longitude
+
++ Free, open source (Apache version 2.0 license)
++ Pure Java
++ Supports query within a circle (start point and radius)
++ Supports query within a "rectangle" (defined by lat1,long1-lat2,long2) 
++ Multiple objects can be stored at the same latitude/longitude without a workaround.
++ Lightweight. The jars (both FeProxiMap and LatLng on which it depends) are together less than 100K.
+
+
+Limitations:
++ Does not do any form of persistence, but easily added.
+
+Competing non-solutions (mostly from OP's question):
++ Simple linear search requires touching each point in the collection: O(n) 
++ Geo-tree is not in Java
++ GeoTools is too big (so GeoRedis is probably also too big)
++ JTS does not allow to query for all points, judging from its documentation.
++ Quadtree is close, but it has some drawbacks:
++        Search is not by radius, it is rectangle.
++        Flat map, won't work near the poles.
++        Two different objects can't be stored at the same latitude/longitude. This can be worked around by making each object a List of objects.
+ 

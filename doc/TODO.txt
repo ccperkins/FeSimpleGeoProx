@@ -1,0 +1,13 @@
+
+
+ TODO:
+ 1) create some simple diagrams:
+    1a) bounding box and search radius
+    1b) box split across antimeridian
+    1c) box near pole
+ 2) explore the granularity of LatLng (how close together are the nearest two distinct points?)
+ 3) create better documentation.  
+    3a) explain difference between this and brute-force search
+    3b) explain the way sorting works 
+	 
+	 
