@@ -35,18 +35,26 @@ A GeoObject is a set of coordinates (LatLng) and a user-given object, and a key.
 2. If needed, create a method to get the location in LatLng for each point
 3. Create a world instance holding those points;
     
+```
+#!java
 		List<MapObjectHolder<YourGeographicalPointClass>> mapObjects = new ArrayList<>();
 		for (YourGeographicalPointClass point: yourGeographicalObjects) {
 			LatLng loc = getLatLngForYourGeographicalPointClass (point);
 			mapObjects.add(new MapObjectHolder<YourGeographicalPointClass> (loc, point));
 		}
 		FeProxiMap<YourGeographicalPointClass> world = new FeProxiMap<YourGeographicalPointClass>(mapObjects);
+```
 		    
 4. You're now ready to search.  Given:
     	 a starting point (given in LatLng)
     	 a search radius (given as a double)
     	 the units of the radius (example: LengthUnit.MILE)
     	 
-		Collection<MapObjectHolder<YourGeographicalPointClass>> pointsInRadius = world.find (start, radius, units);
+
+```
+#!java
+
+      Collection<MapObjectHolder<YourGeographicalPointClass>> pointsInRadius = world.find (start, radius, units);
+
+```
 		
-		This is guaranteed not to return null;
