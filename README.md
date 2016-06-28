@@ -24,15 +24,16 @@ Being faster than brute force was pretty much the driving force behind this, so 
 From a sample database with a bit over a million points, the data from a series of requests (see the microbenchmarks in the tests folder for details) show a clear pattern:  if the search is "large" enough that it's going to return roughly half the points in the world or more, brute force will be faster.   But if the search is of a "reasonable" size (less than half), FeSimpleGeoProx outperforms brute force by a convincing margin.
 
 ![PerformanceProfile.png](https://bitbucket.org/repo/yaG8K9/images/152946229-PerformanceProfile.png)
+
 ## USAGE ##
 
 Construct an instance of this and give it a collection of GeoObject instances (See GeoObject).  
 A GeoObject is a set of coordinates (LatLng) and a user-given object, and a key.
 
 ### Example ###
-    0) Obviously, as a prospective user of this, you already have a source (database, file, collection) of geographical objects, in some class you've written, and obviously they all have geographical coordinates.
-    1) User if needed creates a method to get the location in LatLng for each point
-    2) User creates a world instance holding those points;
+1. Obviously, as a prospective user of this, you already have a source (database, file, collection) of geographical objects, in some class you've written, and obviously they all have geographical coordinates.
+2. If needed, create a method to get the location in LatLng for each point
+3. Create a world instance holding those points;
     
 		List<MapObjectHolder<YourGeographicalPointClass>> mapObjects = new ArrayList<>();
 		for (YourGeographicalPointClass point: yourGeographicalObjects) {
@@ -41,7 +42,7 @@ A GeoObject is a set of coordinates (LatLng) and a user-given object, and a key.
 		}
 		FeProxiMap<YourGeographicalPointClass> world = new FeProxiMap<YourGeographicalPointClass>(mapObjects);
 		    
-    3) You're now ready to search.  Given:
+4. You're now ready to search.  Given:
     	 a starting point (given in LatLng)
     	 a search radius (given as a double)
     	 the units of the radius (example: LengthUnit.MILE)
