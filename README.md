@@ -17,6 +17,13 @@ Makes use of [SimpleLatLng by Tyler Coles](https://github.com/JavadocMD/simplela
 * LIMITATION: Shares the limitations of LatLng: specifically it ignores elevation in calculating distance.
 * LIMITATION: Slower than GeoRedis
 
+
+## Performance ##
+Being faster than brute force was pretty much the driving force behind this, so understanding the performance profile is essential: if you don't know its sweet spot, you don't know whether using it is a good idea.
+
+From a sample database with a bit over a million points, the data from a series of requests (see the microbenchmarks in the tests folder for details) show a clear pattern:  if the search is "large" enough that it's going to return roughly half the points in the world or more, brute force will be faster.   But if the search is of a "reasonable" size (less than half), FeSimpleGeoProx outperforms brute force by a convincing margin.
+
+![PerformanceProfile.png](https://bitbucket.org/repo/yaG8K9/images/152946229-PerformanceProfile.png)
 ## USAGE ##
 
 Construct an instance of this and give it a collection of GeoObject instances (See GeoObject).  
@@ -42,10 +49,3 @@ A GeoObject is a set of coordinates (LatLng) and a user-given object, and a key.
 		Collection<MapObjectHolder<YourGeographicalPointClass>> pointsInRadius = world.find (start, radius, units);
 		
 		This is guaranteed not to return null;
-
-## Performance ##
-Being faster than brute force was pretty much the driving force behind this, so understanding the performance profile is essential: if you don't know its sweet spot, you don't know whether using it is a good idea.
-
-From a sample database with a bit over a million points, the data from a series of requests (see the microbenchmarks in the tests folder for details) show a clear pattern:  if the search is "large" enough that it's going to return roughly half the points in the world or more, brute force will be faster.   But if the search is of a "reasonable" size (less than half), FeSimpleGeoProx outperforms brute force by a convincing margin.
-
-![PerformanceProfile.png](https://bitbucket.org/repo/yaG8K9/images/152946229-PerformanceProfile.png)
