@@ -28,7 +28,7 @@ From a sample database with a bit over a million points, the data from a series 
 ## USAGE ##
 
 Construct an instance of this and give it a collection of GeoObject instances (See GeoObject).  
-A GeoObject is a set of coordinates (LatLng) and a user-given object, and a key.
+A GeoObject is a set of coordinates (LatLng) and a user-given object.
 
 ### Example ###
 1. Obviously, as a prospective user of this, you already have a source (database, file, collection) of geographical objects, in some class you've written, and obviously they all have geographical coordinates.
@@ -57,4 +57,3 @@ A GeoObject is a set of coordinates (LatLng) and a user-given object, and a key.
       Collection<MapObjectHolder<YourGeographicalPointClass>> pointsInRadius = world.find (start, radius, units);
 
 ```
-		
