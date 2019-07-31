@@ -42,7 +42,7 @@ A GeoObject is a set of coordinates (LatLng) and a user-given object.
 			LatLng loc = getLatLngForYourGeographicalPointClass (point);
 			mapObjects.add(new MapObjectHolder<YourGeographicalPointClass> (loc, point));
 		}
-		FeProxiMap<YourGeographicalPointClass> world = new FeProxiMap<YourGeographicalPointClass>(mapObjects);
+		FeSimpleGeoProx<YourGeographicalPointClass> world = new FeSimpleGeoProx<YourGeographicalPointClass>(mapObjects);
 ```
 		    
 4. You're now ready to search.  Given:
